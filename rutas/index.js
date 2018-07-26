@@ -22,5 +22,10 @@ router.post('/data-planta', (req,res)=>{
         res.send(plantas)
     })
 })
+router.get('/registros', (req,res)=>{
+    Plantas.find((error, plantas)=>{
+        res.render('registros', {plantas: plantas})
+    })
+})
 
 module.exports = router;

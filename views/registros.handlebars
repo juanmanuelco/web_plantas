@@ -1,0 +1,31 @@
+{{#if plantas}}
+{{#each plantas}}
+<div style="margin:30px;padding:30px; border:1px black solid">
+    <label for="">Titulo: {{this.Titulo}}</label>
+    <br>
+    <label for="">Descripción</label>
+    <p >{{this.Descipcion}}</p>
+    
+    <br>
+    <label for="">Pasos:</label>
+    <ul class="pasos_ls"></ul>
+    <p style="display:none" class="pasos">{{this.Pasos}}</p>
+</div>
+{{/each}}
+{{/if}}
+
+<script>
+    window.addEventListener('load', ()=>{
+        var pasos= document.getElementsByClassName('pasos')     
+        for(var i=0; i < pasos.length; i++){
+            var elementos= pasos[i].innerHTML
+            elementos= elementos.split('---')
+            var cadena=''
+            for(var j=0; j< elementos.length; j++){
+                cadena+=`<li>${elementos[j]}</li>`
+            }
+            document.getElementsByClassName('pasos_ls')[i].innerHTML=cadena
+            cadena=''
+        }
+    })
+</script>
